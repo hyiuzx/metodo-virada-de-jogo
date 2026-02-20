@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MÉTODO VIRADA DE JOGO™</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* ===== HEADER ===== */
+.header{
+  position:fixed;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  width:90%;
+  max-width:1100px;
+  padding:15px 30px;
+  border-radius:50px;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:1000;
+  border:1px solid rgba(255,215,0,0.3);
+}
+
+.logo{
+  font-weight:700;
+  color:gold;
+}
+
+.nav a{
+  margin-left:20px;
+  text-decoration:none;
+  color:white;
+  font-size:14px;
+  opacity:0.8;
+}
+
+.nav a:hover{
+  opacity:1;
+}
+
+/* ===== VIDEO ===== */
+.background-video{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-4;
+}
+
+.overlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.88);
+  z-index:-3;
+}
+
+/* ===== ILUMINAÇÃO DINÂMICA ===== */
+.light-effect{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:-2;
+  background:radial-gradient(circle at 50% 0%, rgba(255,215,0,0.15), transparent 60%);
+  transition:background 0.3s ease;
+}
+
+/* ===== PARTICULAS ===== */
+#particles-js{
+  position:fixed;
+  width:100%;
+  height:100%;
+  z-index:-1;
+}
+
+canvas{
+  filter: drop-shadow(0 0 6px gold)
+          drop-shadow(0 0 12px gold);
+}
+
+/* ===== SECTIONS ===== */
+section{
+  padding:40px 20px;
+  padding-top: 200px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.container{
+  max-width:900px;
+}
+
+h1{
+  font-size:50px;
+  font-weight:800;
+  margin-bottom:25px;
+}
+
+h2{
+  font-size:36px;
+  margin-bottom:20px;
+}
+
+p{
+  font-size:20px;
+  margin-bottom:30px;
+  line-height:1.6;
+  opacity:0.9;
+}
+.faq-section {
+  padding: 30px 20px;
+  display: block;
+  background: linear-gradient(180deg, #0a0a0a, #111);
+  color: white;
+  text-align: center;
+}
+
+/* TAG ACIMA */
+.faq-tag {
+  display: inline-block;
+  padding: 8px 20px;
+  background: linear-gradient(45deg, #FFD700, #ffae00);
+  color: #000;
+  font-weight: bold;
+  border-radius: 50px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(255,215,0,0.6);
+}
+
+.faq-header h2 {
+  font-size: 36px;
+  margin-bottom: 50px;
+  background: linear-gradient(90deg, #fff, #FFD700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* CONTAINER */
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* CARD */
+.faq-item {
+  background: #1a1a1a;
+  border-radius: 18px;
+  padding: 22px 25px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255,215,0,0.1);
+}
+
+/* Efeito brilho passando */
+.faq-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,215,0,0.15),
+    transparent
+  );
+  transition: 0.6s;
+}
+
+.faq-item:hover::before {
+  left: 100%;
+}
+
+.faq-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255,215,0,0.2);
+}
+
+/* SUMMARY */
+.faq-item summary {
+  font-size: 18px;
+  font-weight: 600;
+  list-style: none;
+  position: relative;
+  padding-right: 30px;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Seta */
+.faq-item summary::after {
+  content: "➜";
+  position: absolute;
+  right: 0;
+  transition: transform 0.4s ease;
+  color: #FFD700;
+}
+
+.faq-item[open] summary::after {
+  transform: rotate(90deg);
+}
+
+/* Resposta com animação suave */
+.faq-item p {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #ccc;
+  line-height: 1.6;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Animação */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Centralização do Container */
+.container-botao {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+}
+
+/* Container agora centralizado no fluxo da página, não flutuante */
+.container-botao-estatico {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 250px 0; /* Espaçamento vertical para não colar nas seções */
+    width: 100%;
+}
+
+/* O Botão Bolha com Brilho Dourado */
+.btn-bubble {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    padding: 25px 50px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.05); /* Mais transparente */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 215, 0, 0.3); /* Borda levemente dourada */
+    
+    /* Brilho suave dourado ao redor */
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2), 
+                inset 0 0 15px rgba(255, 255, 255, 0.1);
+    
+    transition: all 0.4s ease;
+    position: relative;
+    animation: glow-pulse 3s infinite;
+}
+
+.btn-bubble:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 35px rgba(255, 215, 0, 0.4);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Texto Superior Dourado */
+.texto-apoio-dourado {
+    color: #ffd700; /* Dourado */
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    margin-bottom: 8px;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+/* Preço Grande */
+.preco-container {
+    display: flex;
+    align-items: baseline;
+    color: #ffffff;
+    font-family: 'Arial Black', sans-serif;
+}
+
+.simbolo { font-size: 24px; margin-right: 5px; font-weight: bold; }
+.valor { font-size: 72px; line-height: 1; }
+
+/* Animação de pulsação suave no brilho */
+@keyframes glow-pulse {
+    0% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
+    50% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.5); }
+    100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
+}
+/* Configurações para telas de até 480px (Celulares) */
+@media (max-width: 480px) {
+    .container-botao-estatico {
+        padding: 0 20px; /* Margem lateral para o botão não encostar nas bordas */
+        margin-top: 40px;    /* Espaço menor acima no mobile */
+        margin-bottom: 60px; /* Espaço menor abaixo no mobile */
+    }
+
+    .btn-bubble {
+        padding: 20px 30px; /* Reduz o preenchimento interno */
+        width: 90%;         /* Faz o botão ocupar quase toda a largura */
+        max-width: 350px;   /* Limita a largura máxima */
+    }
+
+    .texto-apoio-dourado {
+        font-size: 11px;    /* Texto levemente menor */
+        text-align: center;
+        line-height: 1.3;
+    }
+
+    .valor {
+        font-size: 54px;    /* Diminui o 9,90 para não cortar */
+    }
+
+    .simbolo {
+        font-size: 18px;    /* Diminui o R$ proporcionalmente */
+    }
+}
+/* ===== DOURADO ===== */
+.highlight{
+  background:linear-gradient(45deg,#FFD700,#ffcc00,#b8860b,#FFD700);
+  background-size:300% 300%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:shine 6s linear infinite;
+}
+
+@keyframes shine{
+  0%{background-position:0%}
+  100%{background-position:300%}
+}
+
+/* ===== BOTÕES ===== */
+.btn{
+  display:inline-block;
+  padding:15px 35px;
+  border-radius:50px;
+  font-weight:600;
+  text-decoration:none;
+  color:black;
+  background:gold;
+  margin:10px;
+  transition:0.3s;
+}
+
+.btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 25px gold;
+}
+
+/* ===== REVEAL ===== */
+.reveal{
+  opacity:0;
+  transform:translateY(60px);
+  transition:1s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+/* ===== MOCKUP SECTION ===== */
+#mockup{
+  padding:80px 20px 120px 20px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.mockup-container{
+  perspective:1200px;
+}
+
+/* ===== IPHONE ===== */
+.iphone{
+  width:300px;
+  height:600px;
+  border-radius:40px;
+  background:linear-gradient(145deg,#1a1a1a,#000);
+  padding:15px;
+  box-shadow:
+    0 40px 80px rgba(0,0,0,0.8),
+    inset 0 0 10px rgba(255,255,255,0.05);
+  transform:rotateY(-15deg) rotateX(5deg);
+  animation:floatPhone 6s ease-in-out infinite;
+  position:relative;
+}
+
+/* Reflexo lateral */
+.iphone::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:50%;
+  height:100%;
+  background:linear-gradient(
+    120deg,
+    rgba(255,255,255,0.15),
+    transparent
+  );
+  border-radius:40px;
+}
+
+/* ===== TELA ===== */
+.screen{
+  width:100%;
+  height:100%;
+  border-radius:30px;
+  background:linear-gradient(to bottom,#000000,#111111);
+  overflow:hidden;
+  padding:25px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* ===== CONTEÚDO APP ===== */
+.app-content{
+  text-align:center;
+}
+
+.app-content h3{
+  color:gold;
+  margin-bottom:20px;
+}
+
+.app-quote{
+  font-size:14px;
+  opacity:0.8;
+  margin-bottom:25px;
+}
+
+.app-card{
+  background:rgba(255,215,0,0.1);
+  border:1px solid rgba(255,215,0,0.3);
+  padding:15px;
+  border-radius:15px;
+  font-size:14px;
+  margin-bottom:20px;
+}
+
+.app-card span{
+  display: block;
+  margin-top:8px;
+  font-size:12px;
+  opacity:0.8;
+}
+
+.app-button{
+  background:gold;
+  border:none;
+  padding:10px 20px;
+  border-radius:30px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.app-button:hover{
+  box-shadow:0 0 15px gold;
+  transform:scale(1.05);
+}
+
+/* ===== ANIMAÇÃO FLUTUAR ===== */
+@keyframes floatPhone{
+  0%{transform:rotateY(-15deg) rotateX(5deg) translateY(0px);}
+  50%{transform:rotateY(-15deg) rotateX(5deg) translateY(-15px);}
+  100%{transform:rotateY(-15deg) rotateX(5deg) translateY(0px);}
+}
+/* Footer */
+  footer {
+    padding: 30px;
+    text-align: center;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+
+/* ===== RESPONSIVO MOBILE ===== */
+@media (max-width: 768px){
+
+  header{
+    width:90%;
+    padding:10px 20px;
+  }
+
+  header a{
+    margin-left:10px;
+    font-size:14px;
+  }
+
+  .hero h1{
+    font-size:28px;
+  }
+
+  .hero p{
+    font-size:14px;
+    padding:0 10px;
+  }
+
+  .btn{
+    padding:12px 20px;
+    font-size:14px;
+  }
+
+  section{
+    padding:120px 15px 80px 15px;
+  }
+.faq-section {
+  padding: 100px 20px;
+  background: linear-gradient(180deg, #0a0a0a, #111);
+  color: white;
+  text-align: center;
+}
+
+/* TAG ACIMA */
+.faq-tag {
+  display: inline-block;
+  padding: 8px 20px;
+  background: linear-gradient(45deg, #FFD700, #ffae00);
+  color: #000;
+  font-weight: bold;
+  border-radius: 50px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(255,215,0,0.6);
+}
+
+.faq-header h2 {
+  font-size: 36px;
+  margin-bottom: 50px;
+  background: linear-gradient(90deg, #fff, #FFD700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* CONTAINER */
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* CARD */
+.faq-item {
+  background: #1a1a1a;
+  border-radius: 18px;
+  padding: 22px 25px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255,215,0,0.1);
+}
+
+/* Efeito brilho passando */
+.faq-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,215,0,0.15),
+    transparent
+  );
+  transition: 0.6s;
+}
+
+.faq-item:hover::before {
+  left: 100%;
+}
+
+.faq-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255,215,0,0.2);
+}
+
+/* SUMMARY */
+.faq-item summary {
+  font-size: 18px;
+  font-weight: 600;
+  list-style: none;
+  position: relative;
+  padding-right: 30px;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Seta */
+.faq-item summary::after {
+  content: "➜";
+  position: absolute;
+  right: 0;
+  transition: transform 0.4s ease;
+  color: #FFD700;
+}
+
+.faq-item[open] summary::after {
+  transform: rotate(90deg);
+}
+
+/* Resposta com animação suave */
+.faq-item p {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #ccc;
+  line-height: 1.6;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Animação */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+  /* MOCKUP MENOR NO MOBILE */
+  .iphone{
+    width:240px;
+    height:500px;
+  }
+
+  .app{
+    top:1px;
+    padding:1px;
+  }
+
+  .app h3{
+    font-size:1px;
+  }
+
+  .card{
+    font-size:1px;
+    padding:1px;
+  }
+
+
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">MÉTODO VIRADA DE JOGO™</div>
+  <div class="nav">
+    <a href="#faq">Sobre</a>
+    <a href="#mockup">Benefícios</a>
+    <a href="#comprar">Comprar</a>
+  </div>
+</div>
+
+<video autoplay muted loop playsinline class="background-video">
+  <source src="video.mp4" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+<div class="light-effect" id="lightEffect"></div>
+<div id="particles-js"></div>
+
+<!-- HERO -->
+<section>
+  <div class="container reveal">
+    <h1>Você não é pobre.<br>Você foi <span class="highlight">programado</span> para ser.</h1>
+    <p>Existe um padrão invisível controlando seus resultados financeiros. Esse é o método que vai te libertar da mediocridade e fazê-lo virar o jogo.</p>
+    <a href="#cta" class="btn">Quero Desbloquear</a>
+    <a href="#mockup" class="btn">Ver Como Funciona</a>
+  </div>
+</section>
+
+<!-- DOR -->
+<section id="sobre">
+  <div class="container reveal">
+    <h2>Você quer a todo custo contruir riqueza?</h2>
+    <p>Você trabalha duro, tenta novas ideias, mas o dinheiro nunca evolui de verdade?</p>
+    <a href="#cta" class="btn">Mudar Isso Agora</a>
+  </div>
+</section>
+
+<!-- REVELAÇÃO -->
+<section>
+  <div class="container reveal">
+    <h2>A verdade que ninguém te contou:</h2>
+    <p>O jogo não é esforço.<br>
+    É <span class="highlight">mentalidade financeira programada</span>.</p>
+  </div>
+</section>
+
+<!-- SOLUÇÃO -->
+<section id="beneficios">
+  <div class="container reveal">
+    <h2>Calma, aqui está a solução!</h2>
+    <p>Com o MÉTODO VIRADA DE JOGO™ você ganha clareza mental e reprograma a mente para a prosperidade.</p>
+    <a href="#cta" class="btn">Quero Acessar</a>
+  </div>
+</section>
+<section id="mockup">
+  <div class="mockup-container reveal">
+    
+    <div class="iphone">
+      <div class="screen">
+        <div class="app-content">
+          <h3>MÉTODO VIRADA DE JOGO™</h3>
+          <p class="app-quote">
+            “A riqueza começa na mente.”
+          </p>
+
+          <div class="app-card">
+            Conteúdo do método
+              <span>> Módulo 1 – O Diagnóstico da Sua
+Mente;</span>
+              <span>> Módulo 2 – Quebrando o Ciclo da
+Escassez;</span>
+              <span>> Módulo 3 – Construção de
+Identidade;</span>
+              <span>> Módulo 4 – Plano Prático de Virada:
+Seus Próximos 30 Dias;</span>
+          </div>
+
+          <a href="#cta" class="btn">Começar Evolução</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- TRANSFORMAÇÃO -->
+<section>
+  <div class="container reveal">
+    <h2>Em pouco tempo você</h2>
+    <p>Ulltrapassará limites auto-impostos. Organizará sua vida financeira. Ganhará mais dinheiro. Se tornará o que sempre sonhou. Será livre!</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container reveal">
+    <h2>Está pronto para mudar sua realidade?</h2>
+    <p>Faça agora uma análise da sua mentalidade gratuitamente.</p>
+    <a href="https://www.quizzer.digital/preview/mente-milion%C3%A1ria-EErVpv" class="btn">Fazer Análise</a>
+    <a href="#comprar" class="btn">Comprar método agora</a>
+  </div>
+</section>
+<section class="faq-section" id="faq">
+  
+  <div class="faq-header">
+    <span class="faq-tag">PERGUNTAS FREQUENTES</span>
+    <h2>Dúvidas Antes de Começar?</h2>
+  </div>
+
+  <div class="faq-container">
+
+    <details class="faq-item">
+      <summary>O que é o MÉTODO VIRADA DE JOGO™?</summary>
+      <p>É um método prático que ensina a detectar seus bloqueios mentais que te impedem de alcançar a prosperidade e acabar com esses bloqueios.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>De onde surgiu o método?</summary>
+      <p>Foi feito com informações retiradas de diversos livros de psicologia e finanças.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Funciona para quem não tem dinheiro para investir?</summary>
+      <p>Sim. A proposta é justamente mudar sua mentalidade para que você consiga dinehri, comaçando trabalhando para alguém e depois construindo seu império.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Em quanto tempo posso ver resultados?</summary>
+      <p>Seguindo corretamente o passo a passo, é possível perceber mudanças já no primeiro dia.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>O método serve para qualquer um (independente de idade ou sexo)?</summary>
+      <p>Sim. o código da mente é universal e todas as pessoas podem programá-lo.</p>
+    </details>
+
+  </div>
+</section>
+<section id="comprar">
+ <div class="secao-vendas">
+    <div class="container-botao-estatico">
+        <a href="SEU_LINK_DE_CHECKOUT_AQUI" class="btn-bubble">
+            <span class="texto-apoio-dourado">desbloquear a mente agora por apenas</span>
+            <div class="preco-container">
+                <span class="simbolo">R$</span>
+                <span class="valor">9,90</span>
+            </div>
+        </a>
+    </div>
+ </div>
+</section>
+<script>
+/* REVEAL */
+function reveal(){
+  const reveals=document.querySelectorAll(".reveal");
+  reveals.forEach(el=>{
+    const windowHeight=window.innerHeight;
+    const elementTop=el.getBoundingClientRect().top;
+    if(elementTop<windowHeight-100){
+      el.classList.add("active");
+    }
+  });
+}
+window.addEventListener("scroll",reveal);
+window.addEventListener("load",reveal);
+
+/* ILUMINAÇÃO AO ROLAR */
+window.addEventListener("scroll",()=>{
+  const scrollY=window.scrollY;
+  const height=document.body.scrollHeight-window.innerHeight;
+  const progress=scrollY/height;
+  const light=document.getElementById("lightEffect");
+
+  const position=progress*100;
+  light.style.background=`radial-gradient(circle at 50% ${position}%, rgba(255,215,0,0.18), transparent 60%)`;
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+particlesJS("particles-js",{
+  particles:{
+    number:{value:80},
+    color:{value:"#FFD700"},
+    shape:{type:"circle"},
+    opacity:{value:0.6,random:true},
+    size:{value:4,random:true},
+    line_linked:{enable:false},
+    move:{enable:true,speed:0.4}
+  },
+  retina_detect:true
+});
+</script>
+
+<footer>
+    © 2026 MÉTODO VIRADA DE JOGO™. Todos os direitos reservados.
+</footer>
+
+</body>
+</html>
