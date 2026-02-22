@@ -25,6 +25,14 @@ src="https://www.facebook.com/tr?id=1592916385277659&ev=PageView&noscript=1"
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
+* ================= ESPAÇAMENTO AJUSTADO ================= */
+
+.hero-section{padding:30px 20px 20px 20px;text-align:center;}
+.metodo-section{padding:40px 20px;display:flex;justify-content:center;}
+.modulos-section{padding:40px 20px;display:flex;justify-content:center;}
+.provas-section{padding:50px 20px;text-align:center;}
+.oferta-section{padding:40px 20px;text-align:center;}
+.faq-section{padding:60px 20px;background:#111;text-align:center;}
 *{
   margin:0;
   padding:0;
@@ -41,42 +49,98 @@ body{
   overflow-x:hidden;
 }
 
-/* ===== HEADER ===== */
-.header{
-  position:fixed;
-  top:20px;
-  left:50%;
-  transform:translateX(-50%);
-  width:90%;
-  max-width:1100px;
-  padding:15px 30px;
-  border-radius:50px;
-  background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(10px);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  z-index:1000;
-  border:1px solid rgba(255,215,0,0.3);
+/* REMOVE QUALQUER ESPAÇO INDESEJADO */
+body{
+  margin:0;
+  padding:0;
 }
 
-.logo{
-  font-weight:700;
-  color:gold;
-}
+/* =========================
+   BARRA DE URGÊNCIA
+========================= */
 
-.nav a{
-  margin-left:20px;
-  text-decoration:none;
-  color:white;
+.urgencia-bar{
+  width:100%;
+  background: linear-gradient(90deg,#8b0000,#ff0000,#8b0000);
+  text-align:center;
+  padding:10px 12px;
   font-size:14px;
-  opacity:0.8;
+  font-weight:600;
+  letter-spacing:0.4px;
+  color:#fff;
 }
 
-.nav a:hover{
-  opacity:1;
+/* =========================
+   HEADER PREMIUM (SELO)
+========================= */
+
+.header-premium-container{
+  display:flex;
+  justify-content:center;
+  margin-top:25px;
+  margin-bottom:10px;
 }
 
+.header-premium{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+
+  padding:10px 18px;
+  border-radius:30px;
+
+  background: rgba(255,215,0,0.08);
+  backdrop-filter: blur(10px);
+
+  border:1px solid rgba(255,215,0,0.5);
+
+  box-shadow:
+    inset 0 0 20px rgba(255,215,0,0.2),
+    0 0 25px rgba(255,215,0,0.25);
+
+  font-size:12px;
+  font-weight:600;
+  text-align:center;
+
+  max-width:90%;
+}
+
+.header-premium span{
+  color:gold;
+  text-align:center;
+}
+
+/* Estrelas vetorizadas */
+.estrela{
+  width:14px;
+  height:14px;
+  fill:gold;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media(max-width:768px){
+
+  .urgencia-bar{
+    font-size:12px;
+    padding:8px 10px;
+  }
+
+  .header-premium{
+    font-size:11px;
+    padding:8px 14px;
+    gap:6px;
+  }
+
+  .estrela{
+    width:12px;
+    height:12px;
+  }
+
+}
 /* ===== VIDEO ===== */
 .background-video{
   position:fixed;
@@ -124,31 +188,289 @@ canvas{
           drop-shadow(0 0 12px gold);
 }
 
-/* ===== SECTIONS ===== */
-section{
-  padding:40px 20px;
-  padding-top: 200px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero-section{
+  padding: 30px 20px 40px 20px; /* espaço reduzido para ficar próximo do header */
+  text-align: center;
+}
+
+.hero-content h1{
+  font-size: 36px;
+  line-height: 1.2;
+  max-width: 850px;
+  margin: 0 auto 15px auto;
+}
+
+.destaque-dourado{
+  color: gold;
+}
+
+.sub-hero{
+  font-size: 18px;
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+/* =========================
+   BOTÃO DESBLOQUEAR
+========================= */
+
+.btn-desbloquear{
+  display:inline-block;
+  margin-top:35px;
+  padding:16px 38px;
+
+  font-size:16px;
+  font-weight:700;
+  letter-spacing:1px;
+  text-decoration:none;
   text-align:center;
+
+  color:#000;
+
+  background: linear-gradient(145deg,#ffd700,#ffb700,#ffd700);
+  border-radius:50px;
+
+  box-shadow:
+    0 8px 20px rgba(255,215,0,0.4),
+    inset 0 2px 5px rgba(255,255,255,0.6);
+
+  transition: all 0.25s ease;
 }
 
-.container{
-  max-width:900px;
+/* Hover efeito 3D */
+.btn-desbloquear:hover{
+  transform: translateY(-3px);
+  box-shadow:
+    0 12px 30px rgba(255,215,0,0.6),
+    inset 0 2px 8px rgba(255,255,255,0.8);
 }
 
-h1{
-  font-size:50px;
-  font-weight:800;
-  margin-bottom:25px;
+/* Clique */
+.btn-desbloquear:active{
+  transform: translateY(2px);
+  box-shadow:
+    0 5px 15px rgba(255,215,0,0.4),
+    inset 0 3px 8px rgba(0,0,0,0.2);
 }
 
-h2{
-  font-size:36px;
-  margin-bottom:20px;
+/* Mobile */
+@media(max-width:768px){
+
+  .btn-desbloquear{
+    padding:14px 28px;
+    font-size:14px;
+  }
+
+}
+html {
+  scroll-behavior: smooth;
 }
 
+/* =========================
+   NOTAS PREMIUM
+========================= */
+
+.hero-notas{
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 30px;
+  flex-wrap: nowrap; /* mantém lado a lado até no mobile */
+}
+
+.nota-card{
+  flex: 1;
+  max-width: 200px;
+  min-width: 110px;
+  padding: 18px 12px;
+
+  border-radius: 22px;
+
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255,215,0,0.4);
+
+  box-shadow:
+    inset 0 0 25px rgba(255,215,0,0.15),
+    0 0 30px rgba(255,215,0,0.15);
+
+  text-align: center;
+}
+
+.nota-numero{
+  font-size: 28px;
+  font-weight: 700;
+  color: gold;
+  margin-bottom: 6px;
+}
+
+.nota-texto{
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 768px){
+
+  .hero-content h1{
+    font-size: 26px;
+  }
+
+  .sub-hero{
+    font-size: 15px;
+  }
+
+  .nota-card{
+    padding: 14px 8px;
+  }
+
+  .nota-numero{
+    font-size: 20px;
+  }
+
+  .nota-texto{
+    font-size: 10px;
+  }
+
+}
+/* =========================
+   SEÇÃO MÉTODO
+========================= */
+
+.metodo-section{
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.metodo-box{
+  max-width: 900px;
+  padding: 40px;
+  border-radius: 28px;
+
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(255,215,0,0.4);
+
+  box-shadow:
+    inset 0 0 30px rgba(255,215,0,0.15),
+    0 0 40px rgba(255,215,0,0.15);
+}
+
+/* Header */
+.metodo-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.metodo-header h2{
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* =========================
+   DEGRADÊ METÁLICO REAL
+========================= */
+
+.titulo-metalico{
+  background: linear-gradient(
+    120deg,
+    #fff6b7 0%,
+    #ffd700 20%,
+    #ffb700 40%,
+    #fff2a8 60%,
+    #ffd700 80%,
+    #ffae00 100%
+  );
+  background-size: 200% auto;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: brilho-metalico 4s linear infinite;
+}
+
+/* animação do brilho passando */
+@keyframes brilho-metalico{
+  to{
+    background-position: 200% center;
+  }
+}
+
+/* Logo */
+.metodo-logo{
+  width: 70px;
+  height: auto;
+}
+
+/* Texto */
+.metodo-texto{
+  font-size: 16px;
+  line-height: 1.7;
+  color: #fff;
+  opacity: 0.9;
+}
+
+/* =========================
+   ANIMAÇÃO DE ENTRADA
+========================= */
+
+.fade-up{
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeUp{
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media(max-width:768px){
+
+  .metodo-box{
+    padding: 25px;
+  }
+
+  .metodo-header{
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .metodo-logo{
+    width: 60px;
+  }
+
+  .metodo-header h2{
+    font-size: 22px;
+  }
+
+  .metodo-texto{
+    font-size: 14px;
+  }
+
+}
 p{
   font-size:20px;
   margin-bottom:30px;
@@ -380,6 +702,349 @@ p{
     .simbolo {
         font-size: 18px;    /* Diminui o R$ proporcionalmente */
     }
+}
+/* =========================
+   SEÇÃO MÓDULOS
+========================= */
+
+.modulos-section{
+  padding: 50px 20px 70px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.modulos-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 1100px;
+  width: 100%;
+}
+
+/* Card estilo igual ao hero */
+.modulo-card{
+  padding: 22px 18px;
+  border-radius: 24px;
+
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255,215,0,0.4);
+
+  box-shadow:
+    inset 0 0 25px rgba(255,215,0,0.15),
+    0 0 30px rgba(255,215,0,0.15);
+
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Hover premium */
+.modulo-card:hover{
+  transform: translateY(-6px);
+  box-shadow:
+    inset 0 0 30px rgba(255,215,0,0.25),
+    0 12px 35px rgba(255,215,0,0.25);
+}
+
+.modulo-numero{
+  font-size: 18px;
+  font-weight: 700;
+  color: gold;
+  margin-bottom: 8px;
+}
+
+.modulo-texto{
+  font-size: 14px;
+  color: #fff;
+  opacity: 0.9;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media(max-width:1024px){
+  .modulos-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width:600px){
+  .modulos-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* sempre 2 por linha */
+  gap: 18px;
+  max-width: 800px; /* deixa mais centralizado e elegante */
+  width: 100%;
+  margin: 0 auto;
+}
+
+  .modulo-card{
+    padding: 18px 12px;
+  }
+
+  .modulo-numero{
+    font-size: 16px;
+  }
+
+  .modulo-texto{
+    font-size: 12px;
+  }
+}
+/* =========================
+   PROVAS SOCIAIS
+========================= */
+
+.provas-section{
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.provas-titulo{
+  font-size: 28px;
+  margin-bottom: 40px;
+  color: #fff;
+}
+
+.provas-titulo span{
+  color: gold;
+}
+
+/* Grid */
+.provas-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Card */
+.prova-card{
+  padding: 25px 20px;
+  border-radius: 24px;
+
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255,215,0,0.4);
+
+  box-shadow:
+    inset 0 0 25px rgba(255,215,0,0.15),
+    0 0 30px rgba(255,215,0,0.15);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Hover */
+.prova-card:hover{
+  transform: translateY(-6px);
+  box-shadow:
+    inset 0 0 30px rgba(255,215,0,0.25),
+    0 12px 35px rgba(255,215,0,0.25);
+}
+
+.prova-nome{
+  font-weight: 700;
+  color: gold;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.prova-texto{
+  font-size: 14px;
+  color: #fff;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media(max-width:1024px){
+  .provas-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width:600px){
+  .provas-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .provas-titulo{
+    font-size: 22px;
+  }
+
+  .prova-texto{
+    font-size: 13px;
+  }
+}
+/* =========================
+   SEÇÃO OFERTA AJUSTADA
+========================= */
+
+.oferta-section{
+  padding: 60px 20px;
+  text-align: center;
+}
+
+/* TÍTULO DOURADO METÁLICO */
+
+.oferta-titulo{
+  font-size: 32px;
+  font-weight: 900;
+  margin-bottom: 8px;
+
+  background: linear-gradient(
+    120deg,
+    #fff6b7 0%,
+    #ffd700 25%,
+    #ffb700 50%,
+    #ffd700 75%,
+    #fff6b7 100%
+  );
+
+  background-size: 200% auto;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: brilho-titulo 5s linear infinite;
+}
+
+@keyframes brilho-titulo{
+  to{
+    background-position: 200% center;
+  }
+}
+
+/* SUBTÍTULO MAIS PRÓXIMO */
+
+.oferta-subtitulo{
+  font-size: 15px;
+  opacity: 0.85;
+  margin-bottom: 20px;
+}
+
+/* LOGO MAIS PERTO */
+
+.oferta-logo{
+  width: 110px;
+  margin-bottom: 20px;
+}
+
+/* BLOCO DE PREÇOS MAIS COMPACTO */
+
+.oferta-precos{
+  margin-bottom: 15px;
+}
+
+.preco-antigo{
+  font-size: 13px;
+  margin-bottom: 4px;
+  opacity: 0.7;
+}
+
+.preco-antigo span{
+  text-decoration: line-through;
+  font-size: 16px;
+}
+
+.preco-atual{
+  font-size: 16px;
+}
+
+.preco-atual span{
+  font-size: 44px;
+  font-weight: 900;
+}
+
+/* AVISO MAIS PRÓXIMO */
+
+.oferta-aviso{
+  margin-top: 10px;
+  display: inline-block;
+  background: #b30000;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media(max-width:768px){
+
+  .oferta-titulo{
+    font-size: 22px;
+  }
+
+  .oferta-subtitulo{
+    font-size: 14px;
+  }
+
+  .oferta-logo{
+    width: 90px;
+  }
+
+  .preco-atual span{
+    font-size: 32px;
+  }
+
+}
+/* =========================
+   BOX BOLHA PREMIUM
+========================= */
+
+.oferta-box{
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 30px;
+
+  border-radius: 24px;
+
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255, 215, 0, 0.3);
+
+  box-shadow:
+    0 0 40px rgba(255, 215, 0, 0.15),
+    inset 0 0 25px rgba(255, 255, 255, 0.05);
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* EFEITO BOLHA DE LUZ */
+
+.oferta-box::before{
+  content: "";
+  position: absolute;
+  top: -80px;
+  left: -80px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255,215,0,0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(40px);
+}
+
+.oferta-box::after{
+  content: "";
+  position: absolute;
+  bottom: -100px;
+  right: -100px;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(50px);
 }
 /* ===== DOURADO ===== */
 .highlight{
@@ -715,22 +1380,184 @@ p{
     font-size:1px;
     padding:1px;
   }
+/* ===== BOTÃO PREMIUM METÁLICO ANIMADO ===== */
 
+.cta-premium{
+  display:block;
+  width:fit-content;
+  margin:30px auto;
 
+  padding:18px 55px;
 
+  font-size:18px;
+  font-weight:900;
+  letter-spacing:1px;
+  text-decoration:none;
+  text-transform:uppercase;
+
+  color:#000000; /* TEXTO PRETO */
+
+  background:
+    linear-gradient(
+      145deg,
+      #8a6a00,
+      #ffd700,
+      #fff5b7,
+      #ffd700,
+      #8a6a00
+    );
+
+  border-radius:60px;
+  border:1px solid rgba(255,255,255,0.3);
+
+  box-shadow:
+    0 15px 35px rgba(255,215,0,0.35),
+    inset 0 3px 6px rgba(255,255,255,0.8),
+    inset 0 -8px 12px rgba(0,0,0,0.45);
+
+  position:relative;
+  overflow:hidden;
+
+  transition:all 0.3s ease;
+}
+
+/* BRILHO METÁLICO ANIMADO CONTÍNUO */
+.cta-premium::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-150%;
+  width:50%;
+  height:100%;
+
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.9),
+    transparent
+  );
+
+  transform:skewX(-25deg);
+
+  animation: brilhoMetalico 2.8s linear infinite;
+}
+
+@keyframes brilhoMetalico{
+  0%{
+    left:-150%;
+  }
+  100%{
+    left:150%;
+  }
+}
+
+.cta-premium:hover{
+  transform:translateY(-6px) scale(1.03);
+  box-shadow:
+    0 20px 45px rgba(255,215,0,0.6),
+    inset 0 4px 8px rgba(255,255,255,0.9),
+    inset 0 -10px 14px rgba(0,0,0,0.55);
+}
+
+.cta-premium:active{
+  transform:translateY(2px);
+}
+/* ===== SEÇÃO GARANTIA ===== */
+
+.garantia-section{
+  padding:60px 20px;
+  display:flex;
+  justify-content:center;
+}
+
+.garantia-box{
+  max-width:700px;
+  padding:40px;
+
+  background: linear-gradient(145deg,#111,#1c1c1c);
+  border-radius:25px;
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.6),
+    inset 0 2px 5px rgba(255,255,255,0.05);
+
+  text-align:center;
+  position:relative;
+}
+
+/* Header com estrelas */
+.garantia-header{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:15px;
+  margin-bottom:25px;
+}
+
+/* Estrelas */
+.estrela{
+  font-size:24px;
+  color:#ffd700;
+  text-shadow:0 0 10px rgba(255,215,0,0.8);
+}
+
+/* Título metálico */
+.garantia-header h2{
+  font-size:20px;
+  font-weight:900;
+  letter-spacing:1px;
+
+  background: linear-gradient(
+    145deg,
+    #9c7a00,
+    #ffd700,
+    #fff3a0,
+    #ffd700,
+    #9c7a00
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* Texto normal */
+.garantia-box p{
+  font-size:16px;
+  line-height:1.6;
+  color:#eaeaea;
+  margin-bottom:15px;
+}
+
+/* Texto destaque */
+.garantia-destaque{
+  font-weight:700;
+  color:#ffd700;
+}
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="logo">MÉTODO VIRADA DE JOGO™</div>
-  <div class="nav">
-    <a href="#faq">Sobre</a>
-    <a href="#mockup">Benefícios</a>
-    <a href="#comprar">Comprar</a>
-  </div>
+<!-- BARRA DE URGÊNCIA -->
+<div class="urgencia-bar">
+  50% de desconto para os 100 primeiros compradores. Você pode ser o 98º se comprar agora.
 </div>
 
+<!-- HEADER PREMIUM -->
+<div class="header-premium-container">
+  <div class="header-premium">
+    
+    <svg class="estrela" viewBox="0 0 24 24">
+      <path d="M12 2l3 7 7 .5-5 4 1.5 7-6.5-4-6.5 4 1.5-7-5-4 7-.5z"/>
+    </svg>
+
+    <span>O MÉTODO VIRADA DE JOGO É COMPROVADO POR ESPECIALISTAS!</span>
+
+    <svg class="estrela" viewBox="0 0 24 24">
+      <path d="M12 2l3 7 7 .5-5 4 1.5 7-6.5-4-6.5 4 1.5-7-5-4 7-.5z"/>
+    </svg>
+
+  </div>
+</div>
 <video autoplay muted loop playsinline class="background-video">
   <source src="video.mp4" type="video/mp4">
 </video>
@@ -740,89 +1567,188 @@ p{
 <div id="particles-js"></div>
 
 <!-- HERO -->
-<section>
-  <div class="container reveal">
-    <h1>O JOGO COMEÇA NA <span class="highlight">MENTE</span>.</h1>
-    <p>Existe um padrão invisível controlando seus resultados financeiros. Esse é o método que vai te libertar da mediocridade e fazê-lo virar o jogo.</p>
-    <a href="#cta" class="btn">Quero Desbloquear</a>
-    <a href="#mockup" class="btn">Ver Como Funciona</a>
+<section class="hero-section">
+
+  <div class="hero-content">
+    <h1>
+      Acabe com os <span class="destaque-dourado">bloqueios mentais</span> que te afastam da riqueza!
+    </h1>
+
+    <p class="sub-hero">
+      Reprograme sua mente para a mentalidade dos milionários e vire o jogo rumo à prosperidade.
+    </p>
   </div>
+
+  <!-- NOTAS PREMIUM -->
+  <div class="hero-notas">
+
+    <div class="nota-card">
+      <div class="nota-numero">+1.000</div>
+      <div class="nota-texto">Mentes transformadas</div>
+    </div>
+
+    <div class="nota-card">
+      <div class="nota-numero">4,9 ⭐</div>
+      <div class="nota-texto">Avaliação média</div>
+    </div>
+
+    <div class="nota-card">
+      <div class="nota-numero">100%</div>
+      <div class="nota-texto">Garantia de satisfação</div>
+    </div>
+
+  </div>
+<div style="text-align:center;">
+  <a href="#oferta" class="cta-premium">
+    Desbloquear agora
+  </a>
+</div>
+
+<section class="metodo-section">
+
+  <div class="metodo-box fade-up">
+
+    <div class="metodo-header">
+      <h2>
+        O que é o 
+        <span class="titulo-metalico">MÉTODO VIRADA DE JOGO</span>
+      </h2>
+      <img src="sua-logo.png" alt="Logo Método Virada de Jogo" class="metodo-logo">
+    </div>
+
+    <p class="metodo-texto">
+      O método foi criado por especialistas a partir de estudos aprofundados sobre psicologia e finanças. 
+      É simples, você não consegue o que quer pois a sua mente não está preparada para isso. 
+      O MÉTODO VIRADA DE JOGO simplesmente encontra a raiz do seu problema (o bloqueio) 
+      e te ensina a acabar com esse problema a partir de técnicas de reprogramação mental.
+    </p>
+
+  </div>
+
 </section>
 
-<!-- DOR -->
-<section id="sobre">
-  <div class="container reveal">
-    <h2>Você quer a todo custo contruir riqueza?</h2>
-    <p>Você trabalha duro, tenta novas ideias, mas o dinheiro nunca evolui de verdade?</p>
-    <a href="#cta" class="btn">Mudar Isso Agora</a>
+<section class="modulos-section">
+
+  <div class="modulos-grid">
+
+    <div class="modulo-card">
+      <div class="modulo-numero">Módulo 1</div>
+      <div class="modulo-texto">Crie uma mentalidade anti-pobreza</div>
+    </div>
+
+    <div class="modulo-card">
+      <div class="modulo-numero">Módulo 2</div>
+      <div class="modulo-texto">Quebre o pensamento de escassez</div>
+    </div>
+
+    <div class="modulo-card">
+      <div class="modulo-numero">Módulo 3</div>
+      <div class="modulo-texto">Construa sua identidade financeira</div>
+    </div>
+
+    <div class="modulo-card">
+      <div class="modulo-numero">Módulo 4</div>
+      <div class="modulo-texto">Siga o plano prático de 30 dias</div>
+    </div>
+
   </div>
+
 </section>
+</div> <!-- fecha grid dos módulos -->
+</section> <!-- fecha seção módulos -->
 
-<!-- REVELAÇÃO -->
-<section>
-  <div class="container reveal">
-    <h2>A verdade que ninguém te contou:</h2>
-    <p>O jogo não é esforço.<br>
-    É <span class="highlight">mentalidade financeira programada</span>.</p>
-  </div>
-</section>
+<a href="#oferta" class="cta-premium">
+  Quero o método
+</a>
+<section class="provas-section">
 
-<!-- SOLUÇÃO -->
-<section id="beneficios">
-  <div class="container reveal">
-    <h2>Acessar sua mente é a solução para alcançar seus objetivos.</h2>
-    <p>Com o MÉTODO VIRADA DE JOGO™ você ganha clareza mental e reprograma a mente para a prosperidade.</p>
-    <a href="#cta" class="btn">Quero Acessar</a>
-  </div>
-</section>
-<section id="mockup">
-  <div class="mockup-container reveal">
-    
-    <div class="iphone">
-      <div class="screen">
-        <div class="app-content">
-          <h3>MÉTODO VIRADA DE JOGO™</h3>
-          <p class="app-quote">
-            “A riqueza começa na mente.”
-          </p>
+  <h2 class="provas-titulo">
+    Confira o que nossos <span>alunos</span> acharam!
+  </h2>
 
-          <div class="app-card">
-            Conteúdo do método
-              <span>> Módulo 1 – O Diagnóstico da Sua
-Mente;</span>
-              <span>> Módulo 2 – Quebrando o Ciclo da
-Escassez;</span>
-              <span>> Módulo 3 – Construção de
-Identidade;</span>
-              <span>> Módulo 4 – Plano Prático de Virada:
-Seus Próximos 30 Dias;</span>
-          </div>
+  <div class="provas-grid">
 
-          <a href="#cta" class="btn">Começar Evolução</a>
-        </div>
+    <div class="prova-card">
+      <div class="prova-nome">Maria Silva</div>
+      <div class="prova-texto">“Mudei de vida. Simplesmente isso.”</div>
+    </div>
+
+    <div class="prova-card">
+      <div class="prova-nome">João Santos</div>
+      <div class="prova-texto">
+        “Consegui curar bloqueios e agora tripliquei meu faturamento.”
+      </div>
+    </div>
+
+    <div class="prova-card">
+      <div class="prova-nome">Everaldo Junior</div>
+      <div class="prova-texto">
+        “Esse negócio funciona mesmo! Sou uma nova pessoa agora.”
       </div>
     </div>
 
   </div>
+
 </section>
+<section id="oferta" class="oferta-section">
 
+  <div class="oferta-box">
 
-<!-- TRANSFORMAÇÃO -->
-<section>
-  <div class="container reveal">
-    <h2>Em pouco tempo você</h2>
-    <p>Ulltrapassará limites auto-impostos. Organizará sua vida financeira. Ganhará mais dinheiro. Se tornará o que sempre sonhou. Será livre!</p>
+    <h2 class="oferta-titulo">
+      PROMOÇÃO EXCLUSIVA PARA OS 100 PRIMEIROS!
+    </h2>
+
+    <p class="oferta-subtitulo">
+      97 pessoas já resgataram.
+    </p>
+
+    <img src="sua-logo.png" alt="Logo Método Virada de Jogo" class="oferta-logo">
+
+    <div class="oferta-precos">
+
+      <div class="preco-antigo">
+        De: <span>R$ 29,90</span>
+      </div>
+
+      <div class="preco-atual">
+        Por: <span>R$ 14,90</span>
+      </div>
+<div style="text-align:center;">
+  <a href="https://pay.cakto.com.br/4b73pcb_777663" class="cta-premium">
+    Comprar agora
+  </a>
+</div>
+
+    </div>
+
+    <div class="oferta-aviso">
+      Promoção limitada!
+    </div>
+
   </div>
+
 </section>
+<section class="garantia-section">
 
-<!-- CTA -->
-<section id="cta">
-  <div class="container reveal">
-    <h2>Está pronto para mudar sua realidade?</h2>
-    <p>Faça agora uma análise da sua mentalidade gratuitamente.</p>
-    <a href="https://www.quizzer.digital/preview/mente-milion%C3%A1ria-EErVpv" class="btn">Fazer Análise</a>
-    <a href="#comprar" class="btn">Comprar método agora</a>
+  <div class="garantia-box">
+
+    <div class="garantia-header">
+      <span class="estrela">★</span>
+      <h2>GARANTIA INCONDICIONAL DE 7 DIAS</h2>
+      <span class="estrela">★</span>
+    </div>
+
+    <p>
+      Você pode acessar o método completo e, se por qualquer motivo não ficar satisfeito,
+      basta solicitar o reembolso dentro de 7 dias.
+    </p>
+
+    <p class="garantia-destaque">
+      Risco zero. Ou você evolui, ou recebe 100% do seu dinheiro de volta.
+    </p>
+
   </div>
+
 </section>
 <section class="faq-section" id="faq">
   
@@ -845,12 +1771,12 @@ Seus Próximos 30 Dias;</span>
 
     <details class="faq-item">
       <summary>Funciona para quem não tem dinheiro para investir?</summary>
-      <p>Sim. A proposta é justamente mudar sua mentalidade para que você consiga dinehri, comaçando trabalhando para alguém e depois construindo seu império.</p>
+      <p>Sim. A proposta é justamente mudar sua mentalidade para que você consiga dinehro, começando trabalhando para alguém e depois construindo seu império.</p>
     </details>
 
     <details class="faq-item">
-      <summary>Em quanto tempo posso ver resultados?</summary>
-      <p>Seguindo corretamente o passo a passo, é possível perceber mudanças já no primeiro dia.</p>
+      <summary>E se não der certo para mim?</summary>
+      <p>Você pode pedir reembolso!</p>
     </details>
 
     <details class="faq-item">
@@ -859,19 +1785,6 @@ Seus Próximos 30 Dias;</span>
     </details>
 
   </div>
-</section>
-<section id="comprar">
- <div class="secao-vendas">
-    <div class="container-botao-estatico">
-        <a href="https://pay.cakto.com.br/4b73pcb_777663" class="btn-bubble">
-            <span class="texto-apoio-dourado">desbloquear a mente agora por apenas</span>
-            <div class="preco-container">
-                <span class="simbolo">R$</span>
-                <span class="valor">14,90</span>
-            </div>
-        </a>
-    </div>
- </div>
 </section>
 <script>
 /* REVEAL */
@@ -936,8 +1849,3 @@ particlesJS("particles-js",{
 ></script>
 </body>
 </html>
-
-
-
-
-
